@@ -37,12 +37,11 @@ export default function Display({ gameHandler }) {
                     <div className="dialogue-box">
                         <h1>{text}</h1>
                     </div>
-                    <StageBox />
                 </>
             )}
 
             {stage === 1 && player.length > 0 && enemy.length > 0 && (
-                
+
                 <FightMode />
                 
             )}

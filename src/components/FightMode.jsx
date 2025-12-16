@@ -1,4 +1,5 @@
 import { useGlobal } from "../contexts/GlobalContext"
+import HealtBar from "./HealthBar";
 import StageBox from "./StageBox"
 
 export default function FightMode() {
@@ -13,7 +14,7 @@ export default function FightMode() {
                         <div key={`player-${idx}`} className="pokemon-box player">
                             <h2>{poke.name}</h2>
                             <img src={poke.sprites?.back_default} alt={poke.name} />
-                            <h3>{poke.currentHealth}</h3>
+                            <HealtBar />
                         </div>
                     ))}
 

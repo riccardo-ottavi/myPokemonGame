@@ -6,7 +6,7 @@ export default function StageBox() {
 
     return (
         <div className="stage-box">
-            <h1>{stage}</h1>
+            <h2>Stage {stage}</h2>
         </div>
     )
 }
