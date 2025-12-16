@@ -39,9 +39,17 @@ function AppContent() {
   )
 }
 
-function initializePokemon(pokemon){
-  const myPokemon =  structuredClone(pokemon);
-  myPokemon.currentHealth = 100;
+function calcolaHP(baseStat, level) {
+  return Math.floor(((2 * baseStat) * level) / 100) + level + 10;
+}
+
+
+
+
+
+function initializePokemon(pokemon) {
+  const myPokemon = structuredClone(pokemon);
+  myPokemon.currentHealth = calcolaHP(pokemon.stats[0].base_stat, 5);
   return myPokemon
 }
 
