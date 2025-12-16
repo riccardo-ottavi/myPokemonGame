@@ -49,6 +49,7 @@ function calcolaHP(baseStat, level) {
 function initializePokemon(pokemon) {
   const myPokemon = structuredClone(pokemon);
   myPokemon.currentHealth = calcolaHP(pokemon.stats[0].base_stat, 5);
+  myPokemon.moveSet = pokemon.moves[0].move.name
   return myPokemon
 }
 

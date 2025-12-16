@@ -1,12 +1,16 @@
+import { useGlobal } from "../contexts/GlobalContext"
 import Bag from "./Bag"
 
+
 export default function Inputs() {
+
+    const { player } = useGlobal();
+
     return (
         <div className="inputs">
             <div className="moves-box">
                 <h4>Mosse</h4>
-                <p>mossa 1</p>
-                <p>mossa 2</p>
+                <p>{player[0].moveSet}</p>
                 <p>Fuga (5 di 5)</p>
             </div>
             <Bag />
