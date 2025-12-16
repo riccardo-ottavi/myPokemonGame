@@ -23,7 +23,7 @@ function AppContent() {
       setPlayer([clone])
       setInventory([
         {name:"potion", quantity: 3},
-        {name:"pokeball", quantity: 5}]
+          ]
         )
 
       const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)

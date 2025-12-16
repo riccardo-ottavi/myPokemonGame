@@ -20,7 +20,7 @@
   display: flex;
 }
 
-.fight-box img{
+.fight-box-small img{
   width: 400px;
   height: 400px;
 }
@@ -45,13 +45,24 @@ button {
   white-space: pre-line;
 }
 
+.moves-box{
+  border: black solid 1px;
+}
+
 .dialogue-box{
   max-width: 100%;
 }
 
-.fight-box{
+.fight-box-big{
   width: 100%;
   height: 100%;
+  display: flex;
+}
+
+.fight-box-small{
+  width: 100%;
+  height: 100%;
+  display: flex;
 }
 
 .team-card{
@@ -108,6 +119,15 @@ button {
 
 .black-text{
   color: black;
+}
+
+.bag-carusel img{
+  width: 50px;
+  height: 50px;
+}
+
+.bag{
+  border: 1px black solid
 }
 
 .green-bar{

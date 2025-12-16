@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useGlobal } from "../contexts/GlobalContext";
-import StageBox from "./StageBox";
 import FightMode from "./fightMode";
+
+
 
 export default function Display({ gameHandler }) {
 
@@ -41,9 +42,9 @@ export default function Display({ gameHandler }) {
             )}
 
             {stage === 1 && player.length > 0 && enemy.length > 0 && (
-
-                <FightMode />
-                
+                <>
+                    <FightMode /> 
+                </>         
             )}
         </div>
     );
