@@ -32,13 +32,34 @@ function AppContent() {
     } catch (err) {
       console.error(err)
     }
+
+    //gestisce progressione 
+    generateLevelProgression()
+
   }
+
 
   return (
     <div className="container">
       <Display gameHandler={gameHandler} />
     </div>
   )
+}
+
+function generateLevels(){
+
+}
+
+function handleFight(){
+  while(!isGameOver){
+    handleTurn();
+  }
+}
+
+function handleTurn(){
+  //mossa player
+  //mossa nemico
+  //controlla e aggiorna stati
 }
 
 function calcolaHP(baseStat, level) {
