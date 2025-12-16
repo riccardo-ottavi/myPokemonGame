@@ -6,7 +6,7 @@ import axios from 'axios'
 import { GlobalProvider, useGlobal } from './contexts/GlobalContext'
 
 function AppContent() {
-  const { setStage, setPlayer, setEnemy } = useGlobal()
+  const { setStage, setPlayer, setEnemy, player, inventory, setInventory } = useGlobal()
 
   //random pokemon id
   function generateRandomId() {
@@ -21,6 +21,10 @@ function AppContent() {
       const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
       const clone = initializePokemon(playerRes.data)
       setPlayer([clone])
+      setInventory([
+        {name:"potion", quantity: 3},
+        {name:"pokeball", quantity: 5}]
+        )
 
       const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
       const clone2 = initializePokemon(enemyRes.data)
@@ -34,7 +38,6 @@ function AppContent() {
     <div className="container">
       <Display gameHandler={gameHandler} />
       <Team />
-      <Footer />
     </div>
   )
 }
@@ -42,10 +45,6 @@ function AppContent() {
 function calcolaHP(baseStat, level) {
   return Math.floor(((2 * baseStat) * level) / 100) + level + 10;
 }
-
-
-
-
 
 function initializePokemon(pokemon) {
   const myPokemon = structuredClone(pokemon);

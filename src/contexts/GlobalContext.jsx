@@ -6,6 +6,8 @@ function GlobalProvider({ children }) {
     const [ stage, setStage ] = useState(0);
     const [ player, setPlayer ] = useState([])
     const [ enemy, setEnemy ] = useState([])
+    const [ inventory, setInventory ] = useState([])
+
 
     return(
         <GlobalContext.Provider
@@ -15,7 +17,9 @@ function GlobalProvider({ children }) {
                 player,
                 setPlayer,
                 enemy,
-                setEnemy
+                setEnemy,
+                inventory,
+                setInventory
             }}
         >
             { children }

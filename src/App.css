@@ -106,6 +106,10 @@ button {
   margin-left: 10px;
 }
 
+.black-text{
+  color: black;
+}
+
 .green-bar{
   background-color: green;
   width: 100%;

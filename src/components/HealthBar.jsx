@@ -30,11 +30,9 @@ export default function HealthBar() {
                         <div className="green-bar" style={{ width: `${hpPercent}%` }}></div>
                     </div>
                 </div>
-                <div className="decoration"><span>Hp: {actualHp}/{maxHp}</span></div>
+                <div className="decoration"><span>Hp {actualHp}/{maxHp}</span></div>
             </div>
 
-            {/* Bottone per test */}
-            <button onClick={() => takeDamage(10)}>Subisci 10 danni</button>
         </div>
     );
 }

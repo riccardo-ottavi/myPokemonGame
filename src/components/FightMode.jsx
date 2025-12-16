@@ -4,7 +4,7 @@ import StageBox from "./StageBox"
 
 export default function FightMode() {
 
-    const { stage, setStage, player, enemy } = useGlobal();
+    const { stage, setStage, player, enemy, inventory, setInventory } = useGlobal();
 
     return (
         <>
@@ -23,13 +23,14 @@ export default function FightMode() {
                         <div key={`enemy-${idx}`} className="pokemon-box enemy">
                             <h2>{poke.name}</h2>
                             <img src={poke.sprites?.front_default} alt={poke.name} />
-                             <h3>{poke.currentHealth}</h3>
                         </div>
                     ))}
                 <div className="moves-box">
                     <p>mossa 1</p>
                     <p>mossa 2</p>
-                    <p>Carosello oggetti</p>
+                    {inventory.map(item => (
+                        <p>{item.name}</p>
+                    ))}
                     <p>Fuga (5 di 5)</p>
                 </div>
                 <StageBox />
