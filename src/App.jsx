@@ -2,43 +2,48 @@ import './App.css'
 import Display from './components/Display'
 import Team from './components/Team'
 import Footer from './components/Footer'
-import { useState } from 'react'
-import axios from 'axios'
+
+
 
 function App() {
 
-    const [ stage, setStage ] = useState(0);
-    const [ player, setPlayer ] = useState({})
-    const [ enemy, setEnemy ] = useState({})
 
-    function getPokemon(id){
-      const pokeFetch = new Promise((resolve, reject) => 
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then(response => response.data)
-      .then(poke => resolve(poke))
-      
-      )
-      return pokeFetch
+  //genera annunci per il player
+  function createGreeter(greeting){
+    return function(name){
+      console.log(`${greeting}${name}`)
     }
+  }
 
-  getPokemon(10)
-  .then(pokemon => console.log("il risultato è:", pokemon))
-  .catch(error => console.log(error))
+  //moltiplicatore
+  function createMultiplier(multiplier){
+    return function(number){
+      return number * multiplier;
+    }
+  }
 
+  //create event
+  function createEvent(operations, interval){
+      operations.forEach((operation, index) => {
+        setTimeout(() => {
+          operation()
+        },interval * index)
+      })
+  }
+  //crezione evento di benvenuto
+  createEvent([
+    () => console.log("Benvenuto!"),
+    () => console.log("Sono il professor Oak"),
+    () => console.log("Sarò la tua guida!")
+  ],2000)
 
   return (
     <>
-    <div className="container">
-      <Display 
-        player={player}
-        setPlayer={setPlayer}
-      />
-      <Team 
-        player={player}
-        setPlayer={setPlayer}
-      />
-      <Footer />
-    </div> 
+      <div className="container">
+        <Display />
+        <Team />
+        <Footer />
+      </div>
     </>
   )
 }
