@@ -19,10 +19,10 @@ function AppContent() {
 
     try {
       const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      setPlayer(playerRes.data)
+      setPlayer([playerRes.data])
 
       const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      setEnemy(enemyRes.data)
+      setEnemy([enemyRes.data])
     } catch (err) {
       console.error(err)
     }

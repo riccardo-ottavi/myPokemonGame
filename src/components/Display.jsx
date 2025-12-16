@@ -6,7 +6,7 @@ import FightMode from "./fightMode";
 export default function Display({ gameHandler }) {
 
     const [text, setText] = useState("");
-    const { stage, setStage, player, enemy } = useGlobal();
+    const { stage, setStage, player, enemy } = useGlobal(); // player ed enemy ora sono array
 
     function createEvent(operations, interval) {
         operations.forEach((operation, index) => {
@@ -21,7 +21,7 @@ export default function Display({ gameHandler }) {
             () => displayText("Benvenuto!"),
             () => displayText("Sono il professor Oak. Sarò la tua guida!"),
             () => displayText("Ti verrà affidato un pokemon casuale\n e sarai catapultato nella sfida, sei pronto?"),
-            () => gameHandler(), 
+            () => gameHandler(),
         ], 2000);
     }, []);
 
@@ -33,7 +33,7 @@ export default function Display({ gameHandler }) {
         <div className="display">
             {stage === 0 && (
                 <>
-                    <img src="./oak.png" alt="" />
+                    <img src="./oak.png" alt="Professor Oak" />
                     <div className="dialogue-box">
                         <h1>{text}</h1>
                     </div>
@@ -41,10 +41,9 @@ export default function Display({ gameHandler }) {
                 </>
             )}
 
-            {stage === 1 && player.name && enemy.name && (
-                <div className="fight-box">
-                    <FightMode />
-                </div>
+            {stage === 1 && player.length > 0 && enemy.length > 0 && (
+                
+                <FightMode />
                 
             )}
         </div>

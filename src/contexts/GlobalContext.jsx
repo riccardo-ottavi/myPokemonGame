@@ -4,8 +4,8 @@ const GlobalContext = createContext();
 
 function GlobalProvider({ children }) {
     const [ stage, setStage ] = useState(0);
-    const [ player, setPlayer ] = useState({})
-    const [ enemy, setEnemy ] = useState({})
+    const [ player, setPlayer ] = useState([])
+    const [ enemy, setEnemy ] = useState([])
 
     return(
         <GlobalContext.Provider

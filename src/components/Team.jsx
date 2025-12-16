@@ -1,12 +1,18 @@
+import { useGlobal } from "../contexts/GlobalContext"
+import TeamCard from "./TeamCard"
+
 export default function Team(){
+
+    const { player } = useGlobal()
+
     return (
         <div className="team">
-            <div className="team-card"></div>
-            <div className="team-card"></div>
-            <div className="team-card"></div>
-            <div className="team-card"></div>
-            <div className="team-card"></div>
-            <div className="team-card"></div>
+            { player.map((pokemon, index) => (
+                <TeamCard 
+                    key={index}
+                    pokemon={pokemon}
+                />
+            )) }
         </div>
     )
 }
