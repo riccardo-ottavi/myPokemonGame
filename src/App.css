@@ -7,12 +7,14 @@
 .display {
   width: 80vw;
   height: 90vh;
-  background-color: yellow;
+  background-color: rgba(245, 245, 184, 0.623);
+  display: flex;
+  justify-content: center;
 }
 
 .team{
   width: 20vw;
-  background-color: bisque;
+  background-color: rgb(196, 255, 235);
 }
 
 .container {
@@ -31,6 +33,32 @@ button {
   background-repeat: no-repeat;
   font-size: 8px;
   padding: 50px;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+}
+
+.dialogue-box{
+  max-width: 100%;
+}
+
+.team-card{
+  background-image: url("./dialogue-box.png");
+  height: calc(90vh / 6);
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  padding: 15px;
+}
+
+.stage-box{
+  background-image: url("./dialogue-box.png");
+  height: 150px;
+  width: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  padding: 15px;
 }
 
 .footer {
@@ -39,5 +67,7 @@ button {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: aquamarine;
+  background-image: url("./dialogue-box.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
