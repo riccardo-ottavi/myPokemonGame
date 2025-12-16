@@ -7,10 +7,6 @@ function GlobalProvider({ children }) {
     const [ player, setPlayer ] = useState({})
     const [ enemy, setEnemy ] = useState({})
 
-    function fetchPokemon(id){
-
-    }
-
     return(
         <GlobalContext.Provider
             value={{

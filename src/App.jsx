@@ -3,70 +3,45 @@ import Display from './components/Display'
 import Team from './components/Team'
 import Footer from './components/Footer'
 import axios from 'axios'
-import { useState } from 'react'
+import { GlobalProvider, useGlobal } from './contexts/GlobalContext'
 
-
-
-function App() {
-
-  const [playerTeam, setPlayerTeam] = useState([])
-  const [stage, setStage] = useState(0)
-
-  //genera annunci per il player
-  function createGreeter(greeting) {
-    return function (name) {
-      console.log(`${greeting}${name}`)
-    }
-  }
-
-  //moltiplicatore
-  function createMultiplier(multiplier) {
-    return function (number) {
-      return number * multiplier;
-    }
-  }
-
-  //get pokemon by id
-  async function getPokemon(id) {
-    try {
-      const res = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/${id}`
-      );
-      setPlayerTeam(res.data);
-      return res.data;
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
+function AppContent() {
+  const { setStage, setPlayer, setEnemy } = useGlobal()
 
   //random pokemon id
   function generateRandomId() {
-    const random = Math.floor(
-      Math.random() * 1017
-    ) + 1;
-    return random
+    return Math.floor(Math.random() * 500) + 1
   }
 
-  function gameHandler() {
+  async function gameHandler() {
     setStage(1)
     console.log("Inizia l'avventura");
-    getPokemon(generateRandomId())
+
+    try {
+      const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
+      setPlayer(playerRes.data)
+
+      const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
+      setEnemy(enemyRes.data)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-
   return (
-    <>
-      <div className="container">
-        <Display
-          stage={stage}
-          gameHandler={gameHandler}
-          playerTeam={playerTeam}
-        />
-        <Team />
-        <Footer />
-      </div>
-    </>
+    <div className="container">
+      <Display gameHandler={gameHandler} />
+      <Team />
+      <Footer />
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <GlobalProvider>
+      <AppContent />
+    </GlobalProvider>
   )
 }
 
