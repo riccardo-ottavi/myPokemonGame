@@ -19,10 +19,12 @@ function AppContent() {
 
     try {
       const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      setPlayer([playerRes.data])
+      const clone = initializePokemon(playerRes.data)
+      setPlayer([clone])
 
       const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      setEnemy([enemyRes.data])
+      const clone2 = initializePokemon(enemyRes.data)
+      setEnemy([clone2])
     } catch (err) {
       console.error(err)
     }
@@ -35,6 +37,12 @@ function AppContent() {
       <Footer />
     </div>
   )
+}
+
+function initializePokemon(pokemon){
+  const myPokemon =  structuredClone(pokemon);
+  myPokemon.currentHealth = 100;
+  return myPokemon
 }
 
 function App() {
