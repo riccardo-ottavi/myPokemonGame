@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useGlobal } from "../contexts/GlobalContext";
 import FightMode from "./fightMode";
-
+import Inputs from "./Inputs";
 
 
 export default function Display({ gameHandler }) {
@@ -44,6 +44,7 @@ export default function Display({ gameHandler }) {
             {stage === 1 && player.length > 0 && enemy.length > 0 && (
                 <>
                     <FightMode /> 
+                    <Inputs />
                 </>         
             )}
         </div>

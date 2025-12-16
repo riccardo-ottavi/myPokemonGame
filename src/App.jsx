@@ -37,7 +37,6 @@ function AppContent() {
   return (
     <div className="container">
       <Display gameHandler={gameHandler} />
-      <Team />
     </div>
   )
 }

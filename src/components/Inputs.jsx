@@ -1,18 +1,12 @@
-import { useGlobal } from "../contexts/GlobalContext"
 import Bag from "./Bag"
+import MovesBox from "./MovesBox"
 
 
 export default function Inputs() {
 
-    const { player } = useGlobal();
-
     return (
         <div className="inputs">
-            <div className="moves-box">
-                <h4>Mosse</h4>
-                <p>{player[0].moveSet}</p>
-                <p>Fuga (5 di 5)</p>
-            </div>
+            <MovesBox />
             <Bag />
             <div className="pokedex">
                 <h4>Pokedex</h4>

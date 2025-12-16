@@ -14,23 +14,24 @@ export default function FightMode() {
                     {/* Render dei Pokémon del player */}
                         {player.map((poke, idx) => (
                             <div key={`player-${idx}`} className="pokemon-box player">
-                                <h2>{poke.name}</h2>
-                                <img src={poke.sprites?.back_default} alt={poke.name} />
+                                <h2>{poke.name.toUpperCase()}</h2>
                                 <HealtBar />
+                                <img src={poke.sprites?.back_default} alt={poke.name} />
+                                
                             </div>
                         ))}
 
                         {/* Render dei Pokémon del nemico */}
                         {enemy.map((poke, idx) => (
                             <div key={`enemy-${idx}`} className="pokemon-box enemy">
-                                <h2>{poke.name}</h2>
-                                <img src={poke.sprites?.front_default} alt={poke.name} />
+                                <h2>{poke.name.toUpperCase()}</h2>
+                                <HealtBar />
+                                <img className="enemy" src={poke.sprites?.front_default} alt={poke.name} />
+                                
                             </div>
                         ))}
-                    
+                    <StageBox /> 
                 </div>
-                <Inputs />
-                <StageBox />
                 
                 
             </div>
