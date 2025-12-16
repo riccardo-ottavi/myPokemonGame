@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useGlobal } from "../contexts/GlobalContext";
+import StageBox from "./StageBox";
+import FightMode from "./fightMode";
 
 export default function Display({ gameHandler }) {
 
@@ -35,23 +37,15 @@ export default function Display({ gameHandler }) {
                     <div className="dialogue-box">
                         <h1>{text}</h1>
                     </div>
-                    <div className="stage-box">
-                        <h1>{stage}</h1>
-                    </div>
+                    <StageBox />
                 </>
             )}
 
             {stage === 1 && player.name && enemy.name && (
                 <div className="fight-box">
-                    <h2>{player.name}</h2>
-                    <img src={player?.sprites?.back_default} alt={player.name} />
-                    <h2>{enemy.name}</h2>
-                    <img src={enemy?.sprites?.front_default} alt={enemy.name} />
-                    <div className="moves-box">
-                        <p>mossa 1</p>
-                        <p>mossa 2</p>
-                    </div>
+                    <FightMode />
                 </div>
+                
             )}
         </div>
     );
