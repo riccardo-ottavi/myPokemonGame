@@ -58,7 +58,7 @@ function handleFight(){
 
 function handleTurn(){
   //mossa player
-  
+
   //mossa nemico
   //valuta chi è più veloce e risolvi
   //controlla e aggiorna stati
@@ -70,9 +70,15 @@ function calcolaHP(baseStat, level) {
 
 function initializePokemon(pokemon) {
   const myPokemon = structuredClone(pokemon);
+
   myPokemon.currentHealth = calcolaHP(pokemon.stats[0].base_stat, 5);
-  myPokemon.moveSet = pokemon.moves[0].move.name
-  return myPokemon
+
+  myPokemon.moveSet = pokemon.moves
+  //hardcodate le mosse prese (dopo mettilo dinamico)
+    .slice(0, 4)
+    .map(m => m.move.name);
+
+  return myPokemon;
 }
 
 function App() {
