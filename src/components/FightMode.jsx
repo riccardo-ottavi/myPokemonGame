@@ -2,6 +2,7 @@ import { useGlobal } from "../contexts/GlobalContext"
 import HealtBar from "./HealthBar";
 import StageBox from "./StageBox"
 import Inputs from "./Inputs";
+import { useState } from "react";
 
 export default function FightMode() {
 
@@ -31,6 +32,9 @@ export default function FightMode() {
                             </div>
                         ))}
                     <StageBox /> 
+                    <div className="fight-description">
+
+                    </div>
                 </div>
                 
                 
