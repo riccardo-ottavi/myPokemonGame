@@ -1,12 +1,21 @@
 import './App.css'
 import Display from './components/Display'
-import Team from './components/Team'
-import Footer from './components/Footer'
 import axios from 'axios'
 import { GlobalProvider, useGlobal } from './contexts/GlobalContext'
+import { useState } from 'react'
 
 function AppContent() {
   const { setStage, setPlayer, setEnemy, player, inventory, setInventory } = useGlobal()
+  const [playerSelectedMove, setPlayerSelectedMove] = useState()
+  const [enemySelectedMove, setEnemySelectedMove] = useState()
+  const [ log, setLog ] = useState()
+
+
+  //logica combattimento
+  function selectMoveHandler(move) {
+        setPlayerSelectedMove(move);
+        setLog(`Mossa selezionata:${move}`);
+  }
 
   //random pokemon id
   function generateRandomId() {
@@ -41,7 +50,13 @@ function AppContent() {
 
   return (
     <div className="container">
-      <Display gameHandler={gameHandler} />
+      <Display 
+        gameHandler={gameHandler}
+        selectMoveHandler={selectMoveHandler}
+        playerSelectedMove={playerSelectedMove}
+        log={log}
+        setLog={setLog}
+       />
     </div>
   )
 }
@@ -58,10 +73,9 @@ function handleFight(){
 
 function handleTurn(){
   //mossa player
-
   //mossa nemico
-  //valuta chi è più veloce e risolvi
-  //controlla e aggiorna stati
+  //valuta chi è più veloce
+  //applica danni/controlla se vivi
 }
 
 function calcolaHP(baseStat, level) {

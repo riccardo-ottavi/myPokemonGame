@@ -4,18 +4,10 @@ import FightMode from "./fightMode";
 import Inputs from "./Inputs";
 import Logger from "./Logger";
 
-export default function Display({ gameHandler }) {
+export default function Display({ gameHandler, selectMoveHandler, playerSelectedMove, log, setLog }) {
 
     const [text, setText] = useState("");
     const { stage, setStage, player, enemy } = useGlobal(); // player ed enemy ora sono array
-    const [playerSelectedMove, setPlayerSelectedMove] = useState()
-    const [enemySelectedMove, setEnemySelectedMove] = useState()
-    const [ log, setLog ] = useState()
-
-    function selectMoveHandler(move) {
-        setPlayerSelectedMove(move);
-        setLog(`Mossa selezionata:${move}`);
-    }
 
     function createEvent(operations, interval) {
         operations.forEach((operation, index) => {
