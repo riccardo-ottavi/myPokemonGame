@@ -5,7 +5,7 @@ import { GlobalProvider, useGlobal } from './contexts/GlobalContext'
 import { useState } from 'react'
 
 function AppContent() {
-  const { setStage, setPlayer, setEnemy, player, inventory, setInventory } = useGlobal()
+  const { setStage, setPlayer, setEnemy, player, inventory, setInventory, setPlayerHP, setEnemyHP } = useGlobal()
   const [playerSelectedMove, setPlayerSelectedMove] = useState()
   const [enemySelectedMove, setEnemySelectedMove] = useState()
   const [log, setLog] = useState()
@@ -23,29 +23,26 @@ function AppContent() {
   }
 
   async function gameHandler() {
-    setStage(1)
-    console.log("Inizia l'avventura");
+    setStage(1);
 
     try {
-      const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      const clone = initializePokemon(playerRes.data)
-      setPlayer([clone])
-      setInventory([
-        { name: "potion", quantity: 3 },
-      ]
-      )
+        const playerRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`);
+        const clone = initializePokemon(playerRes.data);
+        setPlayer([clone]);
+        setInventory([{ name: "potion", quantity: 3 }]);
 
-      const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`)
-      const clone2 = initializePokemon(enemyRes.data)
-      setEnemy([clone2])
+        // inizializza HP globale
+        setPlayerHP([calcolaHP(clone.stats[0].base_stat, 5)]);
+
+        const enemyRes = await axios.get(`https://pokeapi.co/api/v2/pokemon/${generateRandomId()}`);
+        const clone2 = initializePokemon(enemyRes.data);
+        setEnemy([clone2]);
+
+        setEnemyHP([calcolaHP(clone2.stats[0].base_stat, 5)]);
     } catch (err) {
-      console.error(err)
+        console.error(err);
     }
-
-    //gestisce progressione 
-    //generateLevelProgression()
-
-  }
+}
 
 
   return (

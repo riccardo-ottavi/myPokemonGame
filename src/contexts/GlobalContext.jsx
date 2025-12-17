@@ -7,6 +7,8 @@ function GlobalProvider({ children }) {
     const [ player, setPlayer ] = useState([])
     const [ enemy, setEnemy ] = useState([])
     const [ inventory, setInventory ] = useState([])
+    const [playerHP, setPlayerHP] = useState([]);
+    const [enemyHP, setEnemyHP] = useState([]);
 
 
     return(
@@ -19,7 +21,11 @@ function GlobalProvider({ children }) {
                 enemy,
                 setEnemy,
                 inventory,
-                setInventory
+                setInventory,
+                enemyHP,
+                playerHP,
+                setPlayerHP,
+                setEnemyHP
             }}
         >
             { children }
