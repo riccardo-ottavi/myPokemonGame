@@ -32,9 +32,6 @@ export default function FightMode() {
                             </div>
                         ))}
                     <StageBox /> 
-                    <div className="fight-description">
-
-                    </div>
                 </div>
                 
                 

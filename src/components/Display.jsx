@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useGlobal } from "../contexts/GlobalContext";
 import FightMode from "./fightMode";
 import Inputs from "./Inputs";
-
+import Logger from "./Logger";
 
 export default function Display({ gameHandler }) {
 
@@ -10,10 +10,11 @@ export default function Display({ gameHandler }) {
     const { stage, setStage, player, enemy } = useGlobal(); // player ed enemy ora sono array
     const [playerSelectedMove, setPlayerSelectedMove] = useState()
     const [enemySelectedMove, setEnemySelectedMove] = useState()
+    const [ log, setLog ] = useState()
 
     function selectMoveHandler(move) {
         setPlayerSelectedMove(move);
-        console.log("Mossa selezionata:", move);
+        setLog(`Mossa selezionata:${move}`);
     }
 
     function createEvent(operations, interval) {
@@ -57,6 +58,9 @@ export default function Display({ gameHandler }) {
                     <Inputs 
                         selectMoveHandler={selectMoveHandler}
                         playerSelectedMove={playerSelectedMove}
+                    />
+                    <Logger 
+                        log={log}
                     />
                 </>         
             )}
