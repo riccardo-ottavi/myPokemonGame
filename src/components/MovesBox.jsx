@@ -1,17 +1,9 @@
 import { useGlobal } from "../contexts/GlobalContext"
 import { useState } from "react";
 
-export default function MovesBox() {
+export default function MovesBox({ selectMoveHandler, playerSelectedMove }) {
 
     const { player } = useGlobal();
-
-    const [playerSelectedMove, setPlayerSelectedMove] = useState()
-    const [enemySelectedMove, setEnemySelectedMove] = useState()
-
-    function selectMoveHandler(move) {
-        setPlayerSelectedMove(move);
-        console.log("Mossa selezionata:", move);
-    }
 
     return (
         <div className="moves-box">

@@ -8,6 +8,13 @@ export default function Display({ gameHandler }) {
 
     const [text, setText] = useState("");
     const { stage, setStage, player, enemy } = useGlobal(); // player ed enemy ora sono array
+    const [playerSelectedMove, setPlayerSelectedMove] = useState()
+    const [enemySelectedMove, setEnemySelectedMove] = useState()
+
+    function selectMoveHandler(move) {
+        setPlayerSelectedMove(move);
+        console.log("Mossa selezionata:", move);
+    }
 
     function createEvent(operations, interval) {
         operations.forEach((operation, index) => {
@@ -43,8 +50,14 @@ export default function Display({ gameHandler }) {
 
             {stage === 1 && player.length > 0 && enemy.length > 0 && (
                 <>
-                    <FightMode /> 
-                    <Inputs />
+                    <FightMode
+                        selectMoveHandler={selectMoveHandler}
+                        playerSelectedMove={playerSelectedMove}
+                    /> 
+                    <Inputs 
+                        selectMoveHandler={selectMoveHandler}
+                        playerSelectedMove={playerSelectedMove}
+                    />
                 </>         
             )}
         </div>
